@@ -1,0 +1,19 @@
+name: Run Continuous Delivery
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cd:
+    uses: ./.github/workflows/cd-template.yaml
+    with:
+      terraform_action: apply
+      name: dev
+      display_name: Dev Environment
+      runner_name: ubuntu-latest
+      environment_name_plan: dev-plan
+      environment_name_apply: dev-apply
+      dependent_environment: ""
+      backend_azure_storage_account_container_name: tfstate-dev
+      root_module_folder_relative_path: .
+      terraform_cli_version: latest
