@@ -5,6 +5,9 @@ on:
 
 jobs:
   cd:
+    permissions:
+      id-token: write     # ✅ allow OIDC token minting for Azure login
+      contents: read      # ✅ required for actions/checkout
     uses: ./.github/workflows/cd-template.yaml
     with:
       terraform_action: apply
